@@ -1131,7 +1131,7 @@ img {
     margin-bottom: 7px;
   }
   .hero__subs {
-    margin-bottom: 9px;
+    margin-bottom: 20px;
   }
   .hero__subs li {
     font-size: clamp(0.75rem, 2.7cqw, 0.8rem);
@@ -1199,7 +1199,7 @@ img {
     margin-bottom: 6px;
   }
   .hero__subs {
-    margin-bottom: 7px;
+    margin-bottom: 17px;
   }
   .hero__subs li {
     font-size: clamp(0.69rem, 2.7cqw, 0.74rem);

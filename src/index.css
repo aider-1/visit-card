@@ -951,10 +951,12 @@ img {
     display: none;
   }
   .hero {
-    padding: 18px 0 0;
+    padding: 14px 0 0;
   }
   .hero__banner {
-    width: min(100% - 28px, 620px);
+    /* The mobile artwork has its own rounded corners, so it can use the
+       full viewport width instead of looking like a small inset card. */
+    width: min(100%, 620px);
     margin-inline: auto;
     overflow: visible;
     background: transparent;
@@ -992,40 +994,37 @@ img {
   .about__arrow {
     display: none;
   }
-  /* Нижний баннер: та же форма-картинка, что и на десктопе, растянутая
-     по высоте контента; диаграмма привязана к баннеру и выглядывает сверху */
+  /* The contact block becomes a full-width mobile banner. The chart is sized
+     from the shell, so it continues to overlap the top-right corner cleanly. */
   .contacts {
     padding-inline: 16px;
     padding-bottom: 72px;
     overflow-x: clip;
   }
-  /* The diagram keeps the SAME formula as the desktop base rule (--d-w /
-     --d-right / --d-top are inherited, not overridden here) so it always peeks
-     out of the notch from the banner's top-right corner. That only works while
-     the banner stays narrower than the shell, so the banner is kept at 87% here
-     too (NOT stretched to full width) — this is what makes the mobile view
-     continuous with the ≥761px view, with no left-shift at the breakpoint. */
+  .contacts__banner-shell {
+    --d-w: clamp(104px, 32cqw, 168px);
+    --d-right: clamp(2px, 0.7cqw, 6px);
+    --d-top: clamp(-62px, -11.7cqw, -38px);
+  }
   .contacts__bars {
     display: block;
     opacity: 1;
   }
   .contacts__banner {
-    /* 87% wide (as on desktop) so the diagram has an empty strip to peek into;
-       aspect-ratio auto lets the height follow the stacked mobile text. */
+    width: 100%;
     aspect-ratio: auto;
-    /* PNG, а не down_banner.svg: у svg viewBox без preserveAspectRatio="none",
-       фоном он не растягивается по высоте (letterbox), а png тянется свободно */
+    /* The source image includes the gold outline and rounded corners. Stretch
+       that decorative frame with the content instead of cropping its edges. */
     background: url('./assets/contacts-banner.png') center / 100% 100% no-repeat;
     padding:
-      clamp(16px, 4vw, 30px) 5%
-      clamp(16px, 4vw, 30px) 4.3%;
+      clamp(18px, 5vw, 30px) 6%
+      clamp(18px, 5vw, 30px) 5%;
     filter: drop-shadow(0 20px 24px rgba(50, 25, 70, 0.3));
   }
   .contacts__lead {
     max-width: 100%;
-    /* Reserve the top-right corner where the diagram overlaps the banner, so the
-       lead wraps before it instead of running under the gold bars. */
-    padding-right: clamp(56px, 20cqw, 150px);
+    /* Keep the lead clear of the diagram that overlaps the upper-right corner. */
+    padding-right: clamp(80px, 25cqw, 150px);
     font-size: clamp(0.82rem, 2.4vw, 1.1rem);
     line-height: 1.2;
     margin-bottom: clamp(8px, 1.8vw, 14px);
@@ -1102,8 +1101,6 @@ img {
     padding-inline: 14px;
     padding-bottom: 64px;
   }
-  /* Banner width (87%) and padding are inherited from the ≤760px rule — no
-     full-width override here, so the diagram keeps peeking from the corner. */
   .contacts__lead {
     font-size: clamp(0.72rem, 3.3vw, 0.86rem);
     line-height: 1.18;

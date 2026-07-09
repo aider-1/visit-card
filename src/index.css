@@ -687,10 +687,11 @@ img {
 .footer__owner {
   color: #d7cee0;
 }
-.footer__disclaimer {
+.footer .footer__disclaimer {
   color: #9a8fab;
   max-width: 900px;
   margin: 4px auto 0;
+  text-align: center;
 }
 
 /* ============================================================================

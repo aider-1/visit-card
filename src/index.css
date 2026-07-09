@@ -902,7 +902,7 @@ img {
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 759px) {
   :root {
     --header-h: 60px;
   }
@@ -1002,16 +1002,23 @@ img {
     overflow-x: clip;
   }
   .contacts__banner-shell {
-    --d-w: clamp(104px, 32cqw, 168px);
-    --d-right: clamp(-30px, 0.7cqw, -25px);
-    --d-top: clamp(-74px, -13cqw, -40px);
+    /* Keep the chart aligned with the desktop composition: its right edge stays
+       inside the shell, while the banner leaves it a visible shoulder. The
+       vertical formula keeps roughly 72px of the chart behind the notch until
+       mid-width phones, then eases that overlap down on narrow screens. */
+    --d-w: clamp(104px, 32cqw, 176px);
+    --d-right: clamp(4px, 0.7cqw, 8px);
+    --d-top: clamp(-80px, -14cqw, -48px);
   }
   .contacts__bars {
     display: block;
     opacity: 1;
   }
   .contacts__banner {
-    width: 100%;
+    /* A fixed visual shoulder prevents the chart from disappearing behind a
+       full-width banner. The lower bound avoids an unnecessary height jump on
+       compact phones. */
+    width: clamp(86%, calc(100% - 75px), 90%);
     aspect-ratio: auto;
     /* The source image includes the gold outline and rounded corners. Stretch
        that decorative frame with the content instead of cropping its edges. */
@@ -1024,7 +1031,7 @@ img {
   .contacts__lead {
     max-width: 100%;
     /* Keep the lead clear of the diagram that overlaps the upper-right corner. */
-    padding-right: clamp(80px, 25cqw, 150px);
+    padding-right: clamp(96px, 18cqw, 112px);
     font-size: clamp(0.82rem, 2.4vw, 1.1rem);
     line-height: 1.2;
     margin-bottom: clamp(8px, 1.8vw, 14px);
@@ -1123,6 +1130,12 @@ img {
     max-width: 100%;
     font-size: clamp(0.66rem, 2.9vw, 0.78rem);
     line-height: 1.2;
+  }
+}
+
+@media (max-width: 425px) {
+  .contacts__banner-shell {
+    --d-top: clamp(-54px, -11cqw, -42px);
   }
 }
 

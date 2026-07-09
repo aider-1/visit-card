@@ -1221,3 +1221,117 @@ img {
     font-size: 0.64rem;
   }
 }
+
+@media (max-width: 446px) {
+  /* Below this point the text is intentionally scaled from the mobile
+     container, so the cards stay compact without a sudden type step. */
+  .hero__banner {
+    height: clamp(152px, calc(34.8vw + 13px), 168px);
+  }
+  .hero__banner-media {
+    height: 100%;
+    overflow: hidden;
+  }
+  .hero__banner-img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero__banner-icon {
+    width: clamp(160px, 35cqw, 168px);
+  }
+  .hero__content {
+    top: 50%;
+  }
+  .hero__title {
+    font-size: clamp(0.94rem, 3.35cqw, 1rem);
+    line-height: 1.04;
+    margin-bottom: 5px;
+  }
+  .hero__subs {
+    margin-bottom: 10px;
+  }
+  .hero__subs li {
+    font-size: clamp(0.64rem, 2.3cqw, 0.7rem);
+    line-height: 1.14;
+  }
+  .hero__cta {
+    font-size: 0.76rem;
+    padding: 6px 18px;
+  }
+
+  .about__lead {
+    font-size: clamp(0.95rem, 3.77vw, 1.05rem);
+  }
+  .about__trust-title {
+    font-size: clamp(1.12rem, 4.4vw, 1.3rem);
+    margin-bottom: clamp(14px, 3.6vw, 18px);
+  }
+  .trust-list {
+    gap: clamp(12px, 3.2vw, 16px);
+  }
+  .trust-list__item {
+    gap: 12px;
+    min-height: 0;
+    padding: 10px 20px;
+    font-size: clamp(0.88rem, 3.55vw, 1rem);
+    line-height: 1.25;
+  }
+  .trust-list__check {
+    width: clamp(22px, 5.4vw, 26px);
+    height: clamp(22px, 5.4vw, 26px);
+  }
+
+  .services {
+    padding-inline: 20px;
+  }
+  .services__grid {
+    gap: clamp(20px, 5.4vw, 26px);
+  }
+  .card {
+    border-radius: clamp(24px, 7vw, 30px);
+    padding: 24px 22px 26px;
+  }
+  .card__head {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .card__icon {
+    width: clamp(46px, 12vw, 52px);
+    height: clamp(46px, 12vw, 52px);
+  }
+  .card__title {
+    font-size: clamp(1.05rem, 4vw, 1.2rem);
+    line-height: 1.15;
+  }
+  .card__list {
+    margin-bottom: 18px;
+  }
+  .card__list li {
+    padding-left: 18px;
+    margin-bottom: clamp(8px, 2.2vw, 10px);
+    font-size: clamp(0.86rem, 3.2vw, 1rem);
+    line-height: 1.35;
+  }
+  .card__list li::before {
+    left: 3px;
+  }
+  .card__highlight {
+    font-size: clamp(0.96rem, 3.55vw, 1.1rem);
+    line-height: 1.25;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero__banner {
+    height: clamp(152px, calc(412px - 65vw), 178px);
+  }
+}
+
+@media (max-width: 360px) {
+  /* The description gains extra lines on compact phones. Keep the banner
+     slightly taller than that block instead of letting the artwork dominate. */
+  .hero__banner {
+    height: clamp(178px, calc(412px - 65vw), 204px);
+  }
+}

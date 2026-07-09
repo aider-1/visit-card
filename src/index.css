@@ -1225,41 +1225,6 @@ img {
 @media (max-width: 446px) {
   /* Below this point the text is intentionally scaled from the mobile
      container, so the cards stay compact without a sudden type step. */
-  .hero__banner {
-    height: clamp(152px, calc(34.8vw + 13px), 168px);
-  }
-  .hero__banner-media {
-    height: 100%;
-    overflow: hidden;
-  }
-  .hero__banner-img {
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .hero__banner-icon {
-    width: clamp(160px, 35cqw, 168px);
-  }
-  .hero__content {
-    top: 50%;
-  }
-  .hero__title {
-    font-size: clamp(0.94rem, 3.35cqw, 1rem);
-    line-height: 1.04;
-    margin-bottom: 5px;
-  }
-  .hero__subs {
-    margin-bottom: 10px;
-  }
-  .hero__subs li {
-    font-size: clamp(0.64rem, 2.3cqw, 0.7rem);
-    line-height: 1.14;
-  }
-  .hero__cta {
-    font-size: 0.76rem;
-    padding: 6px 18px;
-  }
-
   .about__lead {
     font-size: clamp(0.95rem, 3.77vw, 1.05rem);
   }
@@ -1319,19 +1284,5 @@ img {
   .card__highlight {
     font-size: clamp(0.96rem, 3.55vw, 1.1rem);
     line-height: 1.25;
-  }
-}
-
-@media (max-width: 400px) {
-  .hero__banner {
-    height: clamp(152px, calc(412px - 65vw), 178px);
-  }
-}
-
-@media (max-width: 360px) {
-  /* The description gains extra lines on compact phones. Keep the banner
-     slightly taller than that block instead of letting the artwork dominate. */
-  .hero__banner {
-    height: clamp(178px, calc(412px - 65vw), 204px);
   }
 }

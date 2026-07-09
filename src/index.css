@@ -594,7 +594,7 @@ img {
        ABOUT DESKTOP (my notice, not for AI)*/
   --d-w: min(485px, 29.36cqw);
   --d-right: 0.97cqw;
-  --d-top: -18.00cqw; /* чуть ниже прежнего -18.58cqw (совсем немного на десктопе) */
+  --d-top: -16.00cqw; /* чуть ниже прежнего -18.58cqw (совсем немного на десктопе) */
 }
 /* Narrow-screen band: below ~820px the diagram sits a touch high against the
    notch, so drop it a hair (~7px at 772px). This runs continuously down through
@@ -607,7 +607,7 @@ img {
     /* Опускаем диаграмму заметнее, чем на десктопе (было -17.6cqw), и слегка
        двигаем её влево (--d-right больше базовых 0.97cqw), чтобы она выходила
        из ЦЕНТРА выреза, а не у его правого края. */
-    --d-top: -11.7cqw;
+    --d-top: -15.7cqw;
     --d-right: 0.7cqw;
   }
 }
@@ -1003,8 +1003,8 @@ img {
   }
   .contacts__banner-shell {
     --d-w: clamp(104px, 32cqw, 168px);
-    --d-right: clamp(2px, 0.7cqw, 6px);
-    --d-top: clamp(-62px, -11.7cqw, -38px);
+    --d-right: clamp(-30px, 0.7cqw, -25px);
+    --d-top: clamp(-74px, -13cqw, -40px);
   }
   .contacts__bars {
     display: block;

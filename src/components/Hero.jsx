@@ -1,14 +1,16 @@
 import heroCard from '../assets/hero-card.png'
-import heroCardMobile from '../assets/banner_1440x540_mobile.svg'
+import heroBannerBackground from '../../banner_background.svg'
+import heroBannerIcon from '../../banner_icon.svg'
 
 export default function Hero({ onConsult }) {
   return (
     <section className="hero" id="top">
       <div className="hero__banner reveal">
         <picture className="hero__banner-media">
-          <source media="(max-width: 760px)" srcSet={heroCardMobile} />
+          <source media="(max-width: 759px)" srcSet={heroBannerBackground} />
           <img className="hero__banner-img" src={heroCard} alt="" aria-hidden="true" />
         </picture>
+        <img className="hero__banner-icon" src={heroBannerIcon} alt="" aria-hidden="true" />
 
         <div className="hero__content">
           <h1 className="hero__title">

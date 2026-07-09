@@ -310,6 +310,9 @@ img {
   width: 100%;
   height: auto;
 }
+.hero__banner-icon {
+  display: none;
+}
 .hero__content {
   position: absolute;
   z-index: 2;
@@ -967,12 +970,22 @@ img {
     width: 100%;
     height: auto;
   }
+  .hero__banner-icon {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    width: clamp(176px, 40cqw, 268px);
+    height: auto;
+    pointer-events: none;
+  }
   .hero__content {
     left: clamp(22px, 8.2%, 48px);
     top: 49%;
     transform: translateY(-50%);
     z-index: 2;
-    max-width: 55%;
+    max-width: 49%;
     padding: 0;
   }
   .hero__title {
@@ -1059,6 +1072,42 @@ img {
   }
 }
 
+@media (max-width: 621px) {
+  .hero__banner {
+    /* Move the rounded edges beyond the viewport while preserving a compact,
+       unscaled SVG background. */
+    width: calc(100% + 48px);
+    max-width: none;
+    margin-inline: -24px;
+  }
+  .hero__banner-icon {
+    /* The background is wider than the viewport here, so bring the chart
+       back to the visible lower-right corner. */
+    right: 24px;
+  }
+  .hero__content {
+    left: clamp(44px, 9cqw, 60px);
+    top: 50%;
+    max-width: 49%;
+  }
+  .hero__title {
+    font-size: clamp(1.05rem, 4.15cqw, 1.75rem);
+    line-height: 1.08;
+    margin-bottom: clamp(7px, 1.65cqw, 13px);
+  }
+  .hero__subs {
+    margin-bottom: clamp(10px, 2.4cqw, 18px);
+  }
+  .hero__subs li {
+    font-size: clamp(0.75rem, 2.55cqw, 1rem);
+    line-height: 1.18;
+  }
+  .hero__cta {
+    font-size: clamp(0.82rem, 2.65cqw, 0.98rem);
+    padding: clamp(8px, 1.8cqw, 12px) clamp(22px, 4.8cqw, 34px);
+  }
+}
+
 @media (max-width: 738px) {
   /* Diagram size/position stay governed by the single proportional formula in
      the ≤760px rule above — no per-breakpoint --d-* overrides, so no drift. */
@@ -1072,25 +1121,25 @@ img {
     padding-top: 20px;
   }
   .hero__content {
-    left: clamp(18px, 7.8%, 30px);
+    left: clamp(40px, 10cqw, 46px);
     top: 50%;
-    max-width: 54%;
+    max-width: 43%;
   }
   .hero__title {
-    font-size: clamp(0.95rem, 4.5cqw, 1.15rem);
+    font-size: clamp(1.02rem, 4.15cqw, 1.12rem);
     line-height: 1.06;
-    margin-bottom: 6px;
-  }
-  .hero__subs {
     margin-bottom: 7px;
   }
+  .hero__subs {
+    margin-bottom: 9px;
+  }
   .hero__subs li {
-    font-size: clamp(0.62rem, 2.55cqw, 0.74rem);
+    font-size: clamp(0.75rem, 2.7cqw, 0.8rem);
     line-height: 1.16;
   }
   .hero__cta {
-    font-size: clamp(0.66rem, 2.7cqw, 0.78rem);
-    padding: 6px 16px;
+    font-size: clamp(0.82rem, 2.95cqw, 0.9rem);
+    padding: 8px 22px;
   }
   .modal__dialog {
     padding: 34px 22px 26px;
@@ -1142,23 +1191,23 @@ img {
 @media (max-width: 380px) {
   .hero__content {
     top: 51%;
-    max-width: 53%;
+    max-width: 43%;
   }
   .hero__title {
-    font-size: clamp(0.86rem, 4.25cqw, 0.98rem);
+    font-size: clamp(0.98rem, 4.15cqw, 1.05rem);
     line-height: 1.05;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .hero__subs {
-    margin-bottom: 5px;
+    margin-bottom: 7px;
   }
   .hero__subs li {
-    font-size: clamp(0.54rem, 2.35cqw, 0.62rem);
+    font-size: clamp(0.69rem, 2.7cqw, 0.74rem);
     line-height: 1.12;
   }
   .hero__cta {
-    font-size: clamp(0.58rem, 2.5cqw, 0.65rem);
-    padding: 5px 13px;
+    font-size: clamp(0.78rem, 2.9cqw, 0.84rem);
+    padding: 7px 19px;
   }
   .contacts__lead {
     font-size: 0.7rem;

@@ -28,7 +28,6 @@
 
 :root {
   --container: 1700px;
-  --header-container: 1600px;
 
   /* Warm cream page */
   --cream: #f5e9da;
@@ -52,7 +51,7 @@
     16px 20px 0 -7px rgba(104, 84, 61, 0.28),
     0 20px 28px -20px rgba(90, 60, 20, 0.42);
 
-  --header-h: 86px;
+  --header-h: clamp(60px, calc(42.75px + 2.27vw), 86px);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -197,25 +196,26 @@ img {
   box-shadow: 0 10px 26px -14px rgba(0, 0, 0, 0.6);
 }
 .header__inner {
-  max-width: var(--header-container);
+  /* The dark card occupies 82% of the hero artwork. Keeping the header on the
+     same fluid width aligns both outer items with the card's edges. */
+  width: 82%;
   margin: 0 auto;
   min-height: var(--header-h);
-  padding: 0 24px;
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: clamp(10px, 1.05vw, 20px);
 }
 .header__nav {
   display: flex;
-  gap: clamp(44px, 10.5vw, 215px);
+  gap: clamp(40px, 10.5vw, 215px);
   flex: 1;
-  /* Первый пункт меню выравнивается с текстом баннера (~12% экрана) */
-  margin-left: clamp(22px, 5vw, 92px);
+  min-width: 0;
 }
 .header__nav a {
   color: #f3ecff;
   text-decoration: none;
-  font-size: clamp(1.05rem, 1.25vw, 1.5rem);
+  font-size: clamp(0.78rem, calc(0.3rem + 1vw), 1.5rem);
   font-weight: 400;
   position: relative;
   padding: 6px 2px;
@@ -242,7 +242,11 @@ img {
 .header__right {
   display: flex;
   align-items: center;
-  gap: 22px;
+  flex: none;
+  gap: clamp(8px, 1.15vw, 22px);
+}
+.header__social {
+  gap: clamp(6px, 0.65vw, 12px);
 }
 .header__phone {
   text-decoration: none;
@@ -251,14 +255,15 @@ img {
   flex-direction: column;
   line-height: 1.2;
   text-align: right;
+  white-space: nowrap;
 }
 .header__phone-num {
   font-weight: 400;
-  font-size: clamp(1.15rem, 1.2vw, 1.45rem);
+  font-size: clamp(0.82rem, calc(0.4rem + 0.9vw), 1.45rem);
   letter-spacing: 0.3px;
 }
 .header__phone-hours {
-  font-size: clamp(0.72rem, 0.8vw, 0.95rem);
+  font-size: clamp(0.6rem, calc(0.37rem + 0.48vw), 0.95rem);
   color: #c7bccd;
   letter-spacing: 0.3px;
 }
@@ -908,11 +913,18 @@ img {
 
 @media (max-width: 759px) {
   :root {
-    --header-h: 60px;
+    --header-h: clamp(48px, calc(36.3px + 3.12vw), 60px);
+  }
+  .header__inner {
+    width: min(calc(100% - 32px), 620px);
   }
   .header__burger {
     display: flex;
     order: -1;
+    width: clamp(32px, 5.3vw, 40px);
+    height: clamp(32px, 5.3vw, 40px);
+    gap: clamp(4px, 0.65vw, 5px);
+    padding: clamp(6px, 1vw, 8px);
   }
   .header__nav {
     position: absolute;
@@ -934,15 +946,18 @@ img {
     padding: 10px 24px 18px;
   }
   .header__nav a {
-    padding: 14px 2px;
+    padding: clamp(11px, 1.85vw, 14px) 2px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    font-size: 1.1rem;
+    font-size: clamp(0.92rem, 2.5vw, 1.1rem);
   }
   .header__nav a::after {
     display: none;
   }
   .header__phone-num {
-    font-size: 1rem;
+    font-size: clamp(0.78rem, 2.6vw, 1rem);
+  }
+  .header__phone-hours {
+    font-size: clamp(0.56rem, 1.7vw, 0.72rem);
   }
   .header__right {
     margin-left: auto;
@@ -1074,6 +1089,31 @@ img {
 }
 
 @media (max-width: 621px) {
+  :root {
+    --header-h: 56px;
+  }
+  .header__inner {
+    gap: 10px;
+  }
+  .header__burger {
+    width: 33px;
+    height: 33px;
+    gap: 4px;
+    padding: 6px;
+  }
+  .header__nav a {
+    padding: 11.5px 2px;
+    font-size: 15.5px;
+  }
+  .header__right {
+    gap: 8px;
+  }
+  .header__phone-num {
+    font-size: 16px;
+  }
+  .header__phone-hours {
+    font-size: 10.5px;
+  }
   .hero__banner {
     /* Move the rounded edges beyond the viewport while preserving a compact,
        unscaled SVG background. */

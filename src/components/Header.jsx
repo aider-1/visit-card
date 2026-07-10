@@ -43,7 +43,10 @@ export default function Header() {
         </nav>
 
         <div className="header__right">
-          <SocialLinks size={38} className="header__social" />
+          <SocialLinks
+            size="clamp(26px, calc(18px + 1.05vw), 38px)"
+            className="header__social"
+          />
           <a className="header__phone" href={contacts.phoneHref}>
             <span className="header__phone-num">{contacts.phone}</span>
             <span className="header__phone-hours">{contacts.hours}</span>

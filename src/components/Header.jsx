@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { nav, contacts } from '../data'
+import { usePhoneAction } from '../hooks/usePhoneAction'
 import SocialLinks from './SocialLinks'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { phoneCopied, handlePhone } = usePhoneAction(contacts.phoneHref)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -47,9 +49,15 @@ export default function Header() {
             size="clamp(26px, calc(18px + 1.05vw), 38px)"
             className="header__social"
           />
-          <a className="header__phone" href={contacts.phoneHref}>
+          <a
+            className={`phone-action header__phone ${phoneCopied ? 'is-copied' : ''}`}
+            href={contacts.phoneHref}
+            onClick={handlePhone}
+          >
             <span className="header__phone-num">{contacts.phone}</span>
-            <span className="header__phone-hours">{contacts.hours}</span>
+            <span className="phone-action__status header__phone-hours" aria-live="polite">
+              {phoneCopied ? 'Номер скопирован' : contacts.hours}
+            </span>
           </a>
         </div>
       </div>

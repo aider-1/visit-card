@@ -1,10 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { contacts } from '../data'
+import { usePhoneAction } from '../hooks/usePhoneAction'
 import tgIcon from '../assets/telegram.webp'
 import maxIcon from '../assets/max.webp'
 
 export default function ConsultModal({ open, onClose }) {
   const dialogRef = useRef(null)
+  const { phoneCopied, handlePhone } = usePhoneAction(contacts.phoneHref)
 
   // Close on Escape + lock background scroll while open.
   useEffect(() => {
@@ -59,7 +61,11 @@ export default function ConsultModal({ open, onClose }) {
           решение под ваш бизнес.
         </p>
 
-        <a className="modal__phone" href={contacts.phoneHref}>
+        <a
+          className={`phone-action modal__phone ${phoneCopied ? 'is-copied' : ''}`}
+          href={contacts.phoneHref}
+          onClick={handlePhone}
+        >
           <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
             <path
               d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.24 11.5 11.5 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.5 11.5 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"
@@ -68,7 +74,9 @@ export default function ConsultModal({ open, onClose }) {
           </svg>
           <span>
             <span className="modal__phone-num">{contacts.phone}</span>
-            <span className="modal__phone-hours">{contacts.hours}</span>
+            <span className="phone-action__status modal__phone-hours" aria-live="polite">
+              {phoneCopied ? 'Номер скопирован' : contacts.hours}
+            </span>
           </span>
         </a>
 

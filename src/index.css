@@ -175,6 +175,16 @@ img {
   box-shadow: 0 8px 18px -5px rgba(0, 0, 0, 0.45);
 }
 
+.phone-action {
+  cursor: copy;
+}
+.phone-action__status {
+  transition: color 0.2s var(--ease);
+}
+.phone-action.is-copied .phone-action__status {
+  color: var(--gold-light);
+}
+
 /* ============================================================================
    HEADER
    ========================================================================== */
@@ -965,6 +975,9 @@ img {
   }
   .header__phone {
     align-items: flex-end;
+  }
+  .phone-action {
+    cursor: pointer;
   }
   .header__social {
     display: none;

@@ -1,7 +1,10 @@
 import { contacts } from '../data'
 import diagram from '../assets/diagram.svg'
+import { usePhoneAction } from '../hooks/usePhoneAction'
 
 export default function Contacts() {
+  const { phoneCopied, handlePhone } = usePhoneAction(contacts.phoneHref)
+
   return (
     <section className="contacts" id="contacts">
       <h2 className="section-title reveal">Контакты</h2>
@@ -16,10 +19,16 @@ export default function Contacts() {
 
           <div className="contacts__row">
             <div className="contacts__phone-block">
-              <a className="contacts__phone" href={contacts.phoneHref}>
+              <a
+                className={`phone-action contacts__phone ${phoneCopied ? 'is-copied' : ''}`}
+                href={contacts.phoneHref}
+                onClick={handlePhone}
+              >
                 {contacts.phone}
               </a>
-              <span className="contacts__hours">{contacts.hours}</span>
+              <span className="phone-action__status contacts__hours" aria-live="polite">
+                {phoneCopied ? 'Номер скопирован' : contacts.hours}
+              </span>
             </div>
 
             <div className="contacts__addr-block">

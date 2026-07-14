@@ -46,7 +46,7 @@ export default function Header() {
 
         <div className="header__right">
           <SocialLinks
-            size="clamp(26px, calc(18px + 1.05vw), 38px)"
+            size="clamp(18px, calc(17px + 1.3vw), 38px)"
             className="header__social"
           />
           <a

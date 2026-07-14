@@ -11,8 +11,8 @@ export const contacts = {
   address: 'ул. Сварщиков, 2а, оф. 2',
 
   // TODO: указать настоящие ссылки (пока стоят заглушки)
-  telegram: 'https://t.me/', // напр. https://t.me/username
-  max: 'https://max.ru/', // напр. https://max.ru/username
+  telegram: 'https://telegram.me/Yuliya_Vanchugova', // напр. https://t.me/username
+  max: 'https://max.ru/u/f9LHodD0cOJOMiBw5Qca1qW29aEOKWsS6sZ55O11H5pMCXUBr6gCAFiflTU', // напр. https://max.ru/username
 }
 
 export const legal = {

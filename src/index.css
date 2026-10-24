@@ -322,10 +322,9 @@ img {
 }
 .hero__banner-media {
   display: block;
-}
-.hero__banner-img {
-  width: 100%;
-  height: auto;
+  /* Reserve the artwork's exact height while the responsive background loads. */
+  aspect-ratio: 2880 / 1058;
+  background: url('./assets/hero-card.png') center / 100% 100% no-repeat;
 }
 .hero__banner-icon {
   display: none;
@@ -999,9 +998,9 @@ img {
     border-radius: 0;
     box-shadow: none;
   }
-  .hero__banner-img {
-    width: 100%;
-    height: auto;
+  .hero__banner-media {
+    aspect-ratio: 976 / 532;
+    background-image: url('../banner_background.svg');
   }
   .hero__banner-icon {
     display: block;
